@@ -1,6 +1,5 @@
 ---
-title: "share-rmarkdown"
+title: "Arvind Venkatadri - Sharing Resources for GSK class"
 ---
-# Welcome to Arvind's Webpage
 
 This is a website for sharing RMarkdown files for the Applied Metaphorics GSK class!
