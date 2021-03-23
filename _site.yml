@@ -1,0 +1,26 @@
+name: Sharing RMarkdown files
+output_dir: _site
+# include: ["demo.R"]
+exclude: ["docs.txt", "*.csv"]
+navbar:
+  title: "Arvind Venkatadri - Sharing RMarkdown files"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Play and Invent"
+      menu:
+        - text: "Installation"
+          href: Installation.html
+        - text: "Grammar-of-Graphics"
+          href: Grammar-of-Graphics.html
+        - text: "Grammar-of-Networks"
+          href: Grammar-of-Networks.html
+        - text: "Grammar-of-Maps"
+          href: Grammar-of-Maps.html
+        - text: "Grammar-of-Diagrams"
+          href: Grammar-of-Diagrams.html
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    highlight: textmate

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="YOUR NAME HERE" />
+
+
+<title>Grammar of Diagrams: using Universal Markup Language in R</title>
+
+<script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="site_libs/es6shim-0.35.6/es6shim.js"></script>
+<script src="site_libs/es7shim-6.0.0/es7shim.js"></script>
+<script src="site_libs/graphre-0.1.3/graphre.js"></script>
+<script src="site_libs/nomnoml-1.3.1/nomnoml.js"></script>
+<script src="site_libs/nomnoml-binding-0.2.3/nomnoml.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-sm-12 col-md-4 col-lg-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-sm-12 col-md-8 col-lg-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Arvind Venkatadri - Sharing RMarkdown files</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Play and Invent
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="Installation.html">Installation</a>
+    </li>
+    <li>
+      <a href="Grammar-of-Graphics.html">Grammar-of-Graphics</a>
+    </li>
+    <li>
+      <a href="Grammar-of-Networks.html">Grammar-of-Networks</a>
+    </li>
+    <li>
+      <a href="Grammar-of-Maps.html">Grammar-of-Maps</a>
+    </li>
+    <li>
+      <a href="Grammar-of-Diagrams.html">Grammar-of-Diagrams</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Grammar of Diagrams: using Universal Markup Language in R</h1>
+<h4 class="author">YOUR NAME HERE</h4>
+
+</div>
+
+
+<div id="using-plantuml-to-make-diagrams-from-text" class="section level2">
+<h2>Using <code>plantUML</code> to make Diagrams from Text</h2>
+<div id="plantuml-sequence-diagram" class="section level3">
+<h3><code>PlantUML</code> Sequence Diagram</h3>
+<pre class="r"><code>plantuml(
+&quot;skinparam handwritten true
+Alice -&gt; Bob: Authentication Request
+Alice &lt;- Bob: Authentication Response
+Alice -&gt; Bob: Another authentication Request
+
+note over Alice, Bob #palegreen: What the hell?
+note right of Bob #pink: What does she want !!
+
+Alice &lt;- Bob: Another authentication Response
+note left of Alice #red: The lazy bum....&quot;
+) %&gt;% 
+  plot(., vector = FALSE)</code></pre>
+<p><img src="Grammar-of-Diagrams_files/figure-html/Sequence_Diagram_1-1.png" width="672" /></p>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="sequence-diagram-2" class="section level3">
+<h3>Sequence Diagram 2</h3>
+<pre class="r"><code>plot(plantuml
+(&quot;
+actor Appa #yellow
+actor Shubha #palegreen
+
+box \&quot;Parenting Challenges\&quot; #Lightblue
+participant Appa
+participant Shubha
+
+Appa-&gt;Shubha: Hi Chubbu!
+...SEVERAL minutes later...
+Shubha--[#FF1333]-&gt;Appa: Yeah...
+Appa-[#red]&gt;&gt;Shubha: Yenna Chubbu...
+Shubha-&gt;Appa: I\&#39;m bored
+
+alt Appa is angry
+  Appa-&gt; Shubha: Chubbu you need to be more enthu!!
+  note over Appa,Shubha #pink
+    She __never__ does **anything** useful...
+  end note
+  
+  Appa-&gt;Shubha: Why aren\&#39;t you reading something?!!
+  Shubha -&gt; Appa:;-(
+  
+  note right of Shubha #aqua
+    Why doesn\&#39;t he go to office?
+  end note
+end
+
+alt Appa is yeah, like, cool
+  Appa-&gt;Shubha: Podi. Can you solve: &lt;math&gt;(ax^2 + bx + c = 0)&lt;/math&gt;?
+  Shubha-&gt;Appa: Appa...
+  Appa-&gt; Shubha: Ok, Ok...can we get pizza?
+  Shubha-&gt;Appa:;-D
+end box
+end
+&quot;), vector = FALSE
+)</code></pre>
+<p><img src="Grammar-of-Diagrams_files/figure-html/Complex_Sequence_Diagram_2-1.png" width="960" /></p>
+<pre><code>## [1] 0</code></pre>
+</div>
+</div>
+<div id="plantuml-mindmap" class="section level2">
+<h2>PlantUML Mindmap</h2>
+<pre class="r"><code>plot(
+plantuml(&quot;
+  @startmindmap
++ OS
+++ Ubuntu
++++ Linux Mint
++++ Kubuntu
++++ Lubuntu
++++ KDE Neon
+++ LMDE
+++ SolydXK
+++ SteamOS
+++ Raspbian
+-- Windows 95
+-- Windows 98
+-- Windows NT
+--- Windows 8
+--- Windows 10
+@endmindmap&quot;),vector = FALSE)</code></pre>
+<p><img src="Grammar-of-Diagrams_files/figure-html/Mindmap-1.png" width="672" /></p>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="plantuml-gantt-chart" class="section level2">
+<h2><code>PlantUML</code> Gantt Chart</h2>
+<pre class="r"><code>plot(plantuml
+(&quot;
+  [Assignment A1] lasts 6 days and is colored in Lavender/Blue
+  [Assignment A2] lasts 10 days and is colored in Lavender/Blue and starts at      [Assignment A1]&#39;s end
+  [Assignment A3] lasts 8 days and is colored in Lavender/Blue and starts at [Assignment A2]&#39;s end
+  [End of Course] lasts 1 days and is colored in Red and starts 2 days after [Assignment A3]&#39;s end 
+  
+  [Reflection Writing] lasts 30 days and ends at [Assignment A3]&#39;s end
+  [Make Visual Journal] lasts 9 days and is colored in Coral/Green and starts 3       days after [Assignment A1]&#39;s end
+  [Make Poster for Home Alone] lasts 5 days and starts 3 days after [Assignment A2]&#39;s end
+  [Clean up Miro Board] lasts 1 days and starts at [Assignment A3]&#39;s end and ends at [End of Course]&#39;s end
+  &quot;),vector = FALSE
+)</code></pre>
+<p><img src="Grammar-of-Diagrams_files/figure-html/PlantUML_Gantt-1.png" width="672" /></p>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="plantuml-flow-chart" class="section level2">
+<h2>PlantUML flow chart</h2>
+<pre class="r"><code>x &lt;- { # braces are not needed
+&#39;
+(*) --&gt; &quot;Initialization&quot;
+if &quot;Some Test&quot; then
+  --&gt;[true] &quot;Some Activity&quot;
+  --&gt; &quot;Another Activity&quot;
+  -right-&gt; (*)
+else
+  -&gt;[false] &quot;Something Else&quot;
+  --&gt; [Ending Process] (*)
+endif
+&#39;
+}
+
+x &lt;- plantuml(x = x)
+plot(x, vector = FALSE)</code></pre>
+<p><img src="Grammar-of-Diagrams_files/figure-html/Flow_chart-1.png" width="672" /></p>
+<pre><code>## [1] 0</code></pre>
+</div>
+<div id="using-nomnoml" class="section level2">
+<h2>Using `nomnoml</h2>
+<p>The syntax options for nomnoml and what can be created is described here <a href="https://nomnoml.com/" class="uri">https://nomnoml.com/</a></p>
+<p>Association types are connectors between blocks( i.e. Classifiers)</p>
+<p>CSS colours <a href="https://www.w3schools.com/cssref/css_colors.asp" class="uri">https://www.w3schools.com/cssref/css_colors.asp</a> Only these colours are permitted, so use either the names or these specific colour hash codes. Any general hash code will <em>not</em> render.</p>
+<pre class="nomnoml"><code>//association-1
+[a] - [b] 
+
+//association-2
+[b] -&gt; [c] 
+
+//association_3
+[c] &lt;-&gt; [a]
+
+//dependency-1
+[a] &lt;--&gt;[d]
+
+//dependency-2
+#.ell: visual=ellipse fill=#fbfb09 bold
+#.arvind: visual=rhomb fill=#ff2234 bold
+[&lt;ell&gt;e]--&gt;[a]
+//generalization-1
+[c]-:&gt;[&lt;arvind&gt;k]
+
+//implementation --:&gt;
+[k]--:&gt;[d]</code></pre>
+<div id="htmlwidget-40b798580d7eb8237a08" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-40b798580d7eb8237a08">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//association-1\n[a] - [b] \n\n//association-2\n[b] -> [c] \n\n//association_3\n[c] <-> [a]\n\n//dependency-1\n[a] <-->[d]\n\n//dependency-2\n#.ell: visual=ellipse fill=#fbfb09 bold\n#.arvind: visual=rhomb fill=#ff2234 bold\n[<ell>e]-->[a]\n//generalization-1\n[c]-:>[<arvind>k]\n\n//implementation --:>\n[k]--:>[d]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>//composition +-
+[a]+-[b]
+//composition +-&gt;
+[b]-+[c]
+//aggregation o-
+[c]o-&gt;[d]
+//aggregation o-&gt;
+[d]o-&gt;[a]
+//note --
+[d]--[everything happens;here]
+//hidden -/-
+[d]-/-[f]
+////////////////////////
+//weightless edge _&gt;
+//[k]_&gt;[d] //not working
+//weightless dashed__
+//[d]__[j] //not working</code></pre>
+<div id="htmlwidget-b768dacb39557fd7385b" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b768dacb39557fd7385b">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//composition +-\n[a]+-[b]\n//composition +->\n[b]-+[c]\n//aggregation o-\n[c]o->[d]\n//aggregation o->\n[d]o->[a]\n//note --\n[d]--[everything happens;here]\n//hidden -/-\n[d]-/-[f]\n////////////////////////\n//weightless edge _>\n//[k]_>[d] //not working\n//weightless dashed__\n//[d]__[j] //not working","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="classifier-types" class="section level3">
+<h3>Classifier Types</h3>
+<p>These are different kinds of <strong>blocks</strong>.</p>
+<pre class="nomnoml"><code>#direction:down
+#background:lightgrey
+#fill: fuchsia; green; purple
+#fillArrows: false
+#font: Courier
+[class]-&gt;[&lt;abstract&gt; abstract]
+[&lt;abstract&gt; abstract]-:&gt;[&lt;instance&gt; instance]
+[&lt;instance&gt; instance]-:&gt;[&lt;note&gt; note]
+[&lt;note&gt; note]--&gt;[&lt;reference&gt; reference]</code></pre>
+<div id="htmlwidget-1639fcccc4590b77a295" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1639fcccc4590b77a295">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#direction:down\n#background:lightgrey\n#fill: fuchsia; green; purple\n#fillArrows: false\n#font: Courier\n[class]->[<abstract> abstract]\n[<abstract> abstract]-:>[<instance> instance]\n[<instance> instance]-:>[<note> note]\n[<note> note]-->[<reference> reference]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>[&lt;package&gt; package|components]--&gt;[&lt;frame&gt; frame|]
+[&lt;database&gt; database]--&gt;[&lt;start&gt; start]
+[&lt;end&gt; end]-o&gt;[&lt;state&gt; state]</code></pre>
+<div id="htmlwidget-baf0efcc854d217b1212" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-baf0efcc854d217b1212">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<package> package|components]-->[<frame> frame|]\n[<database> database]-->[<start> start]\n[<end> end]-o>[<state> state]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>[&lt;choice&gt; choice]---&gt;[&lt;sync&gt; sync]
+[&lt;input&gt; input]-&gt;[&lt;sender&gt; sender]
+[&lt;receiver&gt; receiver]o-[&lt;transceiver&gt; transceiver]</code></pre>
+<div id="htmlwidget-c0a24760a78bf02d39aa" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c0a24760a78bf02d39aa">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<choice> choice]--->[<sync> sync]\n[<input> input]->[<sender> sender]\n[<receiver> receiver]o-[<transceiver> transceiver]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>#font: CenturySchoolbook
+#fill: lightyellow
+#stroke: green
+
+[&lt;actor&gt; actor]---[&lt;usecase&gt; usecase]
+[&lt;usecase&gt; usecase]&lt;--&gt;[&lt;label&gt; label]
+[&lt;usecase&gt; usecase]-/-[&lt;hidden&gt; hidden]</code></pre>
+<div id="htmlwidget-31bdefa9f886948d7282" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-31bdefa9f886948d7282">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#font: CenturySchoolbook\n#fill: lightyellow\n#stroke: green\n\n[<actor> actor]---[<usecase> usecase]\n[<usecase> usecase]<-->[<label> label]\n[<usecase> usecase]-/-[<hidden> hidden]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>[&lt;table&gt; table| a | 5 || b | 7]</code></pre>
+<div id="htmlwidget-4a992e0af9c5b221e249" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4a992e0af9c5b221e249">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| a | 5 || b | 7]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>[&lt;table&gt; table| c | 9 ]</code></pre>
+<div id="htmlwidget-f844cb48bcc395a7a2d5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f844cb48bcc395a7a2d5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| c | 9 ]","svg":false},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="directives" class="section level2">
+<h2>Directives</h2>
+<p>Directives change the nature of the diagram rendered, by affective parameters like colour, direction and margins.</p>
+<pre class="nomnoml"><code>#import: filename
+#arrowSize: 1
+#bendSize: 0.3
+#direction: down | right
+#gutter: 5
+#edgeMargin: 0
+#gravity: 1
+#edges: hard | rounded
+#background: lightgrey
+
+//nested list of colours
+//#fill: #fcfcfc; #eee8d5; #fdf6e3
+#fill: lightgreen; pink;
+#fillArrows: false
+#font: Calibri
+#fontSize: 12
+#leading: 1.25
+#lineWidth: 3
+#padding: 8
+#spacing: 40
+#stroke: #33322E
+#title: filename
+#zoom: 1
+#acyclicer: greedy
+#ranker: network-simplex | tight-tree | longest-path
+[Pirate|eyeCount: Int|raid()|pillage()|
+  [beard]--[parrot]
+  [beard]-:&gt;[foul mouth]
+  ]
+
+[&lt;table&gt;mischief | bawl | sing || yell | drink]
+
+[&lt;abstract&gt;Marauder]&lt;:--[Pirate]
+[Pirate]- 0..7[mischief]
+[jollyness]_&gt;[Pirate]
+[jollyness]-&gt;[rum]
+[jollyness]-&gt;[singing]
+[Pirate]-&gt; *[rum|tastiness: Int|swig()]
+[Pirate]-&gt;[singing]
+[singing]&lt;-&gt;[rum]
+
+[&lt;start&gt;st]-&gt;[&lt;state&gt;plunder]
+[plunder]-&gt;[&lt;choice&gt;more loot]
+[more loot]-&gt;[st]
+[more loot] no -&gt;[&lt;end&gt;e]
+
+[&lt;actor&gt;Sailor] - [&lt;usecase&gt;shiver me;timbers]</code></pre>
+<div id="htmlwidget-d44f99b6167fe625bc09" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d44f99b6167fe625bc09">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#import: filename\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down | right\n#gutter: 5\n#edgeMargin: 0\n#gravity: 1\n#edges: hard | rounded\n#background: lightgrey\n\n//nested list of colours\n//#fill: #fcfcfc; #eee8d5; #fdf6e3\n#fill: lightgreen; pink;\n#fillArrows: false\n#font: Calibri\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 8\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex | tight-tree | longest-path\n[Pirate|eyeCount: Int|raid()|pillage()|\n  [beard]--[parrot]\n  [beard]-:>[foul mouth]\n  ]\n\n[<table>mischief | bawl | sing || yell | drink]\n\n[<abstract>Marauder]<:--[Pirate]\n[Pirate]- 0..7[mischief]\n[jollyness]_>[Pirate]\n[jollyness]->[rum]\n[jollyness]->[singing]\n[Pirate]-> *[rum|tastiness: Int|swig()]\n[Pirate]->[singing]\n[singing]<->[rum]\n\n[<start>st]->[<state>plunder]\n[plunder]->[<choice>more loot]\n[more loot]->[st]\n[more loot] no ->[<end>e]\n\n[<actor>Sailor] - [<usecase>shiver me;timbers]","svg":false},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="custom-classifier-styles" class="section level2">
+<h2>Custom classifier styles</h2>
+<p>A directive that starts with “.” define a <strong>classifier’s style</strong>. The style is written as a space separated list of <em>modifiers</em> and <em>key/value pairs</em>.</p>
+<pre class="nomnoml"><code>#.box: fill=#8f8 dashed
+#.blob: visual=ellipse title=bold
+#.arvind: visual=rhomb title=bold dashed fill=CornFlowerBlue
+[&lt;box&gt; GreenBox]
+[&lt;blob&gt; Blobby]
+[&lt;arvind&gt; Someone]</code></pre>
+<div id="htmlwidget-ca3adba08cf94f413514" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ca3adba08cf94f413514">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#.box: fill=#8f8 dashed\n#.blob: visual=ellipse title=bold\n#.arvind: visual=rhomb title=bold dashed fill=CornFlowerBlue\n[<box> GreenBox]\n[<blob> Blobby]\n[<arvind> Someone]","svg":false},"evals":[],"jsHooks":[]}</script>
+<p>##Key/value pairs fill=(any css color) stroke=(any css color) align=center align=left direction=right direction=down</p>
+<p>visual=actor visual=class visual=database visual=ellipse visual=end visual=frame visual=hidden visual=input visual=none visual=note visual=package visual=receiver visual=rhomb visual=roundrect visual=sender visual=start visual=sync visual=table visual=transceiver Style title and text body title=left,italic,bold body=center,italic,bold</p>
+</div>
+<div id="text-modifiers" class="section level2">
+<h2>Text modifiers</h2>
+<p>bold center italic left underline</p>
+<pre class="nomnoml"><code># .box: fill=#8f8 dashed
+# .blob: visual=rhomb title=bold fill=#8f8 dashed
+
+[A]-[B]
+[B]--[&lt;usecase&gt;C]
+[C]-[&lt;box&gt; D]
+[B]--[&lt;blob&gt; Jabba;TheHut]</code></pre>
+<div id="htmlwidget-d8c0fcaf3e4c8b54d645" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d8c0fcaf3e4c8b54d645">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n# .box: fill=#8f8 dashed\n# .blob: visual=rhomb title=bold fill=#8f8 dashed\n\n[A]-[B]\n[B]--[<usecase>C]\n[C]-[<box> D]\n[B]--[<blob> Jabba;TheHut]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>[a] -&gt;[b]
+[b] -:&gt; [c]
+[c]o-&gt;[d]
+[d]-/-[e]</code></pre>
+<div id="htmlwidget-b14379301826883d6c39" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b14379301826883d6c39">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[a] ->[b]\n[b] -:> [c]\n[c]o->[d]\n[d]-/-[e]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>#fill: lightgreen; lightblue; lightyellow; grey; white
+
+[&lt;table&gt; table | c | 9 ]
+
+[R | [&lt;table&gt; Packages |
+         Base R |
+         [ &lt;table&gt; tidyverse| ggplot | tidyr | readr |
+             [&lt;table&gt; dplyr|
+                 magrittr | Others]]]]</code></pre>
+<div id="htmlwidget-c2da6d2bf348810a02db" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c2da6d2bf348810a02db">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; grey; white\n\n[<table> table | c | 9 ]\n\n[R | [<table> Packages |\n         Base R |\n         [ <table> tidyverse| ggplot | tidyr | readr |\n             [<table> dplyr|\n                 magrittr | Others]]]]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>#fill: lightgreen; lightblue; lightyellow; pink; white
+
+[RStudio | [R | [&lt;table&gt; Packages |
+                   Base R | [ tidyverse |
+                               ggplot | tidyr | readr |
+                               [dplyr]--[magrittr]
+                               [dplyr]--[Others]
+                             | tibble
+                             ]
+                 | lubridate | DiagrammeR | Lattice]]]</code></pre>
+<div id="htmlwidget-e6c1920772834613408a" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e6c1920772834613408a">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; pink; white\n\n[RStudio | [R | [<table> Packages |\n                   Base R | [ tidyverse |\n                               ggplot | tidyr | readr |\n                               [dplyr]--[magrittr]\n                               [dplyr]--[Others]\n                             | tibble\n                             ]\n                 | lubridate | DiagrammeR | Lattice]]]","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="nomnoml"><code>[Linux]+-[Ubuntu]
+[Linux]+-[Mint]
+[Ubuntu]--[Mint]
+[Linux]+-[Rosa Linux]
+[Linux]+-[Mx Linux]
+[Debian]-+[Linux]
+[Linux]--[Sai]
+[Sai]-+[Sripradha]
+
+[Fedora]-+[Linux]
+[Puppy Linux]-+[Linux]
+[Personal Pups]-+[Puppy Linux]</code></pre>
+<div id="htmlwidget-d4cdc9d5610668cafde8" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d4cdc9d5610668cafde8">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[Linux]+-[Ubuntu]\n[Linux]+-[Mint]\n[Ubuntu]--[Mint]\n[Linux]+-[Rosa Linux]\n[Linux]+-[Mx Linux]\n[Debian]-+[Linux]\n[Linux]--[Sai]\n[Sai]-+[Sripradha]\n\n[Fedora]-+[Linux]\n[Puppy Linux]-+[Linux]\n[Personal Pups]-+[Puppy Linux]\n","svg":false},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>plot(plantuml
+(&quot;
+actor Anamika #yellow
+actor Sai #palegreen
+actor Komal #purple
+actor Arvind #Red
+
+Arvind-&gt;Sai: You are also making too much noise!
+Sai-&gt;Arvind : ;-O
+Arvind-&gt;Anamika: You are making too much noise!
+Anamika-&gt;Sai: Hi there!
+Sai-&gt;Anamika: yeah...
+Note left of Anamika: How rude she is!
+Anamika-&gt;Komal: Hey, you done with A3?
+Komal-&gt;Anamika: (*&amp;^%#$^&amp;*)
+
+Arvind-&gt;Ishita: YOU ARE LATE !!
+&quot;))</code></pre>
+<p><img src="Grammar-of-Diagrams_files/figure-html/unnamed-chunk-13-1.png" width="960" /></p>
+<pre><code>## [1] 0</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
