@@ -19,6 +19,9 @@ navbar:
           href: Grammar-of-Maps.html
         - text: "Grammar-of-Diagrams"
           href: Grammar-of-Diagrams.html
+        - text: "Metaphors-with-Graphics"
+          href: Metaphors-with-Graphics.html
+
 output:
   html_document:
     theme: flatly
