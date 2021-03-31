@@ -40,9 +40,35 @@ note left of Alice #red: The lazy bum...."
 
 ```
 
-### Sequence Diagram 2
+## Sequence Diagram-2
 
-```{r Complex_Sequence_Diagram_2, fig.width = 10, fig.height = 15}
+```{r sequence-diagram-2, fig.width = 10, fig.height = 15}
+plot(plantuml
+("
+actor Anamika #yellow
+actor Sai #palegreen
+actor Komal #purple
+actor Arvind #Red
+
+Arvind->Sai: You are also making too much noise!
+Sai->Arvind : ;-O
+Arvind->Anamika: You are making too much noise!
+Anamika->Sai: Hi there!
+Sai->Anamika: yeah...
+Note left of Anamika: How rude she is!
+Anamika->Komal: Hey, you done with A3?
+Komal->Anamika: (*&^%#$^&*)
+
+Arvind->Ishita: YOU ARE LATE !!
+"),vector = FALSE
+)
+
+```
+
+
+### Sequence Diagram 3
+
+```{r Complex_Sequence_Diagram_3, fig.width = 10, fig.height = 15}
 plot(plantuml
 ("
 actor Appa #yellow
@@ -147,7 +173,7 @@ x <- plantuml(x = x)
 plot(x, vector = FALSE)
 ```
 
-## Using `nomnoml
+## Using `nomnoml`
 
 The syntax options for nomnoml and what can be created is described here <https://nomnoml.com/>
 
@@ -398,34 +424,10 @@ underline
 [Linux]+-[Rosa Linux]
 [Linux]+-[Mx Linux]
 [Debian]-+[Linux]
-[Linux]--[Sai]
-[Sai]-+[Sripradha]
+
 
 [Fedora]-+[Linux]
 [Puppy Linux]-+[Linux]
 [Personal Pups]-+[Puppy Linux]
 
 ```
-
-```{r fig.width = 10, fig.height = 15}
-plot(plantuml
-("
-actor Anamika #yellow
-actor Sai #palegreen
-actor Komal #purple
-actor Arvind #Red
-
-Arvind->Sai: You are also making too much noise!
-Sai->Arvind : ;-O
-Arvind->Anamika: You are making too much noise!
-Anamika->Sai: Hi there!
-Sai->Anamika: yeah...
-Note left of Anamika: How rude she is!
-Anamika->Komal: Hey, you done with A3?
-Komal->Anamika: (*&^%#$^&*)
-
-Arvind->Ishita: YOU ARE LATE !!
-"))
-
-```
-

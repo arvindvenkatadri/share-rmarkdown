@@ -392,8 +392,32 @@ note left of Alice #red: The lazy bum....&quot;
 <p><img src="Grammar-of-Diagrams_files/figure-html/Sequence_Diagram_1-1.png" width="672" /></p>
 <pre><code>## [1] 0</code></pre>
 </div>
-<div id="sequence-diagram-2" class="section level3">
-<h3>Sequence Diagram 2</h3>
+</div>
+<div id="sequence-diagram-2" class="section level2">
+<h2>Sequence Diagram-2</h2>
+<pre class="r"><code>plot(plantuml
+(&quot;
+actor Anamika #yellow
+actor Sai #palegreen
+actor Komal #purple
+actor Arvind #Red
+
+Arvind-&gt;Sai: You are also making too much noise!
+Sai-&gt;Arvind : ;-O
+Arvind-&gt;Anamika: You are making too much noise!
+Anamika-&gt;Sai: Hi there!
+Sai-&gt;Anamika: yeah...
+Note left of Anamika: How rude she is!
+Anamika-&gt;Komal: Hey, you done with A3?
+Komal-&gt;Anamika: (*&amp;^%#$^&amp;*)
+
+Arvind-&gt;Ishita: YOU ARE LATE !!
+&quot;),vector = FALSE
+)</code></pre>
+<p><img src="Grammar-of-Diagrams_files/figure-html/sequence-diagram-2-1.png" width="960" /></p>
+<pre><code>## [1] 0</code></pre>
+<div id="sequence-diagram-3" class="section level3">
+<h3>Sequence Diagram 3</h3>
 <pre class="r"><code>plot(plantuml
 (&quot;
 actor Appa #yellow
@@ -432,7 +456,7 @@ end box
 end
 &quot;), vector = FALSE
 )</code></pre>
-<p><img src="Grammar-of-Diagrams_files/figure-html/Complex_Sequence_Diagram_2-1.png" width="960" /></p>
+<p><img src="Grammar-of-Diagrams_files/figure-html/Complex_Sequence_Diagram_3-1.png" width="960" /></p>
 <pre><code>## [1] 0</code></pre>
 </div>
 </div>
@@ -500,7 +524,7 @@ plot(x, vector = FALSE)</code></pre>
 <pre><code>## [1] 0</code></pre>
 </div>
 <div id="using-nomnoml" class="section level2">
-<h2>Using `nomnoml</h2>
+<h2>Using <code>nomnoml</code></h2>
 <p>The syntax options for nomnoml and what can be created is described here <a href="https://nomnoml.com/" class="uri">https://nomnoml.com/</a></p>
 <p>Association types are connectors between blocks( i.e. Classifiers)</p>
 <p>CSS colours <a href="https://www.w3schools.com/cssref/css_colors.asp" class="uri">https://www.w3schools.com/cssref/css_colors.asp</a> Only these colours are permitted, so use either the names or these specific colour hash codes. Any general hash code will <em>not</em> render.</p>
@@ -525,8 +549,8 @@ plot(x, vector = FALSE)</code></pre>
 
 //implementation --:&gt;
 [k]--:&gt;[d]</code></pre>
-<div id="htmlwidget-c54662df56a348e62d1a" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c54662df56a348e62d1a">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//association-1\n[a] - [b] \n\n//association-2\n[b] -> [c] \n\n//association_3\n[c] <-> [a]\n\n//dependency-1\n[a] <-->[d]\n\n//dependency-2\n#.ell: visual=ellipse fill=#fbfb09 bold\n#.arvind: visual=rhomb fill=#ff2234 bold\n[<ell>e]-->[a]\n//generalization-1\n[c]-:>[<arvind>k]\n\n//implementation --:>\n[k]--:>[d]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dd0580eb3c066d635236" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dd0580eb3c066d635236">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//association-1\n[a] - [b] \n\n//association-2\n[b] -> [c] \n\n//association_3\n[c] <-> [a]\n\n//dependency-1\n[a] <-->[d]\n\n//dependency-2\n#.ell: visual=ellipse fill=#fbfb09 bold\n#.arvind: visual=rhomb fill=#ff2234 bold\n[<ell>e]-->[a]\n//generalization-1\n[c]-:>[<arvind>k]\n\n//implementation --:>\n[k]--:>[d]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>//composition +-
 [a]+-[b]
 //composition +-&gt;
@@ -544,8 +568,8 @@ plot(x, vector = FALSE)</code></pre>
 //[k]_&gt;[d] //not working
 //weightless dashed__
 //[d]__[j] //not working</code></pre>
-<div id="htmlwidget-90905804b8d5878ad95e" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-90905804b8d5878ad95e">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//composition +-\n[a]+-[b]\n//composition +->\n[b]-+[c]\n//aggregation o-\n[c]o->[d]\n//aggregation o->\n[d]o->[a]\n//note --\n[d]--[everything happens;here]\n//hidden -/-\n[d]-/-[f]\n////////////////////////\n//weightless edge _>\n//[k]_>[d] //not working\n//weightless dashed__\n//[d]__[j] //not working","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1769c1c2964c147226f7" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1769c1c2964c147226f7">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//composition +-\n[a]+-[b]\n//composition +->\n[b]-+[c]\n//aggregation o-\n[c]o->[d]\n//aggregation o->\n[d]o->[a]\n//note --\n[d]--[everything happens;here]\n//hidden -/-\n[d]-/-[f]\n////////////////////////\n//weightless edge _>\n//[k]_>[d] //not working\n//weightless dashed__\n//[d]__[j] //not working","svg":false},"evals":[],"jsHooks":[]}</script>
 <div id="classifier-types" class="section level3">
 <h3>Classifier Types</h3>
 <p>These are different kinds of <strong>blocks</strong>.</p>
@@ -558,18 +582,18 @@ plot(x, vector = FALSE)</code></pre>
 [&lt;abstract&gt; abstract]-:&gt;[&lt;instance&gt; instance]
 [&lt;instance&gt; instance]-:&gt;[&lt;note&gt; note]
 [&lt;note&gt; note]--&gt;[&lt;reference&gt; reference]</code></pre>
-<div id="htmlwidget-33f7525e7eac8320a61c" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-33f7525e7eac8320a61c">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#direction:down\n#background:lightgrey\n#fill: fuchsia; green; purple\n#fillArrows: false\n#font: Courier\n[class]->[<abstract> abstract]\n[<abstract> abstract]-:>[<instance> instance]\n[<instance> instance]-:>[<note> note]\n[<note> note]-->[<reference> reference]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e2c4c9d58e51857ce254" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e2c4c9d58e51857ce254">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#direction:down\n#background:lightgrey\n#fill: fuchsia; green; purple\n#fillArrows: false\n#font: Courier\n[class]->[<abstract> abstract]\n[<abstract> abstract]-:>[<instance> instance]\n[<instance> instance]-:>[<note> note]\n[<note> note]-->[<reference> reference]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;package&gt; package|components]--&gt;[&lt;frame&gt; frame|]
 [&lt;database&gt; database]--&gt;[&lt;start&gt; start]
 [&lt;end&gt; end]-o&gt;[&lt;state&gt; state]</code></pre>
-<div id="htmlwidget-3883f09d7b41de4d8979" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3883f09d7b41de4d8979">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<package> package|components]-->[<frame> frame|]\n[<database> database]-->[<start> start]\n[<end> end]-o>[<state> state]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d30da43d20aee233f504" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d30da43d20aee233f504">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<package> package|components]-->[<frame> frame|]\n[<database> database]-->[<start> start]\n[<end> end]-o>[<state> state]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;choice&gt; choice]---&gt;[&lt;sync&gt; sync]
 [&lt;input&gt; input]-&gt;[&lt;sender&gt; sender]
 [&lt;receiver&gt; receiver]o-[&lt;transceiver&gt; transceiver]</code></pre>
-<div id="htmlwidget-2878fc2549482167949a" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2878fc2549482167949a">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<choice> choice]--->[<sync> sync]\n[<input> input]->[<sender> sender]\n[<receiver> receiver]o-[<transceiver> transceiver]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4392bf67a705e3c7439b" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4392bf67a705e3c7439b">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<choice> choice]--->[<sync> sync]\n[<input> input]->[<sender> sender]\n[<receiver> receiver]o-[<transceiver> transceiver]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>#font: CenturySchoolbook
 #fill: lightyellow
 #stroke: green
@@ -577,14 +601,14 @@ plot(x, vector = FALSE)</code></pre>
 [&lt;actor&gt; actor]---[&lt;usecase&gt; usecase]
 [&lt;usecase&gt; usecase]&lt;--&gt;[&lt;label&gt; label]
 [&lt;usecase&gt; usecase]-/-[&lt;hidden&gt; hidden]</code></pre>
-<div id="htmlwidget-6a2f99bd8d358f31266f" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a2f99bd8d358f31266f">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#font: CenturySchoolbook\n#fill: lightyellow\n#stroke: green\n\n[<actor> actor]---[<usecase> usecase]\n[<usecase> usecase]<-->[<label> label]\n[<usecase> usecase]-/-[<hidden> hidden]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-22147048fa2413deb6a5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-22147048fa2413deb6a5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#font: CenturySchoolbook\n#fill: lightyellow\n#stroke: green\n\n[<actor> actor]---[<usecase> usecase]\n[<usecase> usecase]<-->[<label> label]\n[<usecase> usecase]-/-[<hidden> hidden]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;table&gt; table| a | 5 || b | 7]</code></pre>
-<div id="htmlwidget-932549ef8d5ea0b7e2bb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-932549ef8d5ea0b7e2bb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| a | 5 || b | 7]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8fae386df67fff5ff7a0" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8fae386df67fff5ff7a0">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| a | 5 || b | 7]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;table&gt; table| c | 9 ]</code></pre>
-<div id="htmlwidget-7038339c84fd1390abc2" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7038339c84fd1390abc2">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| c | 9 ]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-869278a76b5de05c1b24" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-869278a76b5de05c1b24">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| c | 9 ]","svg":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="directives" class="section level2">
@@ -637,8 +661,8 @@ plot(x, vector = FALSE)</code></pre>
 [more loot] no -&gt;[&lt;end&gt;e]
 
 [&lt;actor&gt;Sailor] - [&lt;usecase&gt;shiver me;timbers]</code></pre>
-<div id="htmlwidget-73835611857ccd6cc835" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-73835611857ccd6cc835">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#import: filename\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down | right\n#gutter: 5\n#edgeMargin: 0\n#gravity: 1\n#edges: hard | rounded\n#background: lightgrey\n\n//nested list of colours\n//#fill: #fcfcfc; #eee8d5; #fdf6e3\n#fill: lightgreen; pink;\n#fillArrows: false\n#font: Calibri\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 8\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex | tight-tree | longest-path\n[Pirate|eyeCount: Int|raid()|pillage()|\n  [beard]--[parrot]\n  [beard]-:>[foul mouth]\n  ]\n\n[<table>mischief | bawl | sing || yell | drink]\n\n[<abstract>Marauder]<:--[Pirate]\n[Pirate]- 0..7[mischief]\n[jollyness]_>[Pirate]\n[jollyness]->[rum]\n[jollyness]->[singing]\n[Pirate]-> *[rum|tastiness: Int|swig()]\n[Pirate]->[singing]\n[singing]<->[rum]\n\n[<start>st]->[<state>plunder]\n[plunder]->[<choice>more loot]\n[more loot]->[st]\n[more loot] no ->[<end>e]\n\n[<actor>Sailor] - [<usecase>shiver me;timbers]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-99d57bdb66a532eecc02" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-99d57bdb66a532eecc02">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#import: filename\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down | right\n#gutter: 5\n#edgeMargin: 0\n#gravity: 1\n#edges: hard | rounded\n#background: lightgrey\n\n//nested list of colours\n//#fill: #fcfcfc; #eee8d5; #fdf6e3\n#fill: lightgreen; pink;\n#fillArrows: false\n#font: Calibri\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 8\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex | tight-tree | longest-path\n[Pirate|eyeCount: Int|raid()|pillage()|\n  [beard]--[parrot]\n  [beard]-:>[foul mouth]\n  ]\n\n[<table>mischief | bawl | sing || yell | drink]\n\n[<abstract>Marauder]<:--[Pirate]\n[Pirate]- 0..7[mischief]\n[jollyness]_>[Pirate]\n[jollyness]->[rum]\n[jollyness]->[singing]\n[Pirate]-> *[rum|tastiness: Int|swig()]\n[Pirate]->[singing]\n[singing]<->[rum]\n\n[<start>st]->[<state>plunder]\n[plunder]->[<choice>more loot]\n[more loot]->[st]\n[more loot] no ->[<end>e]\n\n[<actor>Sailor] - [<usecase>shiver me;timbers]","svg":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="custom-classifier-styles" class="section level2">
 <h2>Custom classifier styles</h2>
@@ -649,8 +673,8 @@ plot(x, vector = FALSE)</code></pre>
 [&lt;box&gt; GreenBox]
 [&lt;blob&gt; Blobby]
 [&lt;arvind&gt; Someone]</code></pre>
-<div id="htmlwidget-08f1064ae25769abeea5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-08f1064ae25769abeea5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#.box: fill=#8f8 dashed\n#.blob: visual=ellipse title=bold\n#.arvind: visual=rhomb title=bold dashed fill=CornFlowerBlue\n[<box> GreenBox]\n[<blob> Blobby]\n[<arvind> Someone]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-186d9a9d675d3ab42eda" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-186d9a9d675d3ab42eda">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#.box: fill=#8f8 dashed\n#.blob: visual=ellipse title=bold\n#.arvind: visual=rhomb title=bold dashed fill=CornFlowerBlue\n[<box> GreenBox]\n[<blob> Blobby]\n[<arvind> Someone]","svg":false},"evals":[],"jsHooks":[]}</script>
 <p>##Key/value pairs fill=(any css color) stroke=(any css color) align=center align=left direction=right direction=down</p>
 <p>visual=actor visual=class visual=database visual=ellipse visual=end visual=frame visual=hidden visual=input visual=none visual=note visual=package visual=receiver visual=rhomb visual=roundrect visual=sender visual=start visual=sync visual=table visual=transceiver Style title and text body title=left,italic,bold body=center,italic,bold</p>
 </div>
@@ -664,14 +688,14 @@ plot(x, vector = FALSE)</code></pre>
 [B]--[&lt;usecase&gt;C]
 [C]-[&lt;box&gt; D]
 [B]--[&lt;blob&gt; Jabba;TheHut]</code></pre>
-<div id="htmlwidget-6300d657440f834a4958" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6300d657440f834a4958">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n# .box: fill=#8f8 dashed\n# .blob: visual=rhomb title=bold fill=#8f8 dashed\n\n[A]-[B]\n[B]--[<usecase>C]\n[C]-[<box> D]\n[B]--[<blob> Jabba;TheHut]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-850248255457b08ce1fd" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-850248255457b08ce1fd">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n# .box: fill=#8f8 dashed\n# .blob: visual=rhomb title=bold fill=#8f8 dashed\n\n[A]-[B]\n[B]--[<usecase>C]\n[C]-[<box> D]\n[B]--[<blob> Jabba;TheHut]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[a] -&gt;[b]
 [b] -:&gt; [c]
 [c]o-&gt;[d]
 [d]-/-[e]</code></pre>
-<div id="htmlwidget-7e3747f6fca6966cfffc" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7e3747f6fca6966cfffc">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[a] ->[b]\n[b] -:> [c]\n[c]o->[d]\n[d]-/-[e]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6660e1e9f0411b9ef2fa" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6660e1e9f0411b9ef2fa">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[a] ->[b]\n[b] -:> [c]\n[c]o->[d]\n[d]-/-[e]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>#fill: lightgreen; lightblue; lightyellow; grey; white
 
 [&lt;table&gt; table | c | 9 ]
@@ -681,8 +705,8 @@ plot(x, vector = FALSE)</code></pre>
          [ &lt;table&gt; tidyverse| ggplot | tidyr | readr |
              [&lt;table&gt; dplyr|
                  magrittr | Others]]]]</code></pre>
-<div id="htmlwidget-6f3c4861619974648085" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6f3c4861619974648085">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; grey; white\n\n[<table> table | c | 9 ]\n\n[R | [<table> Packages |\n         Base R |\n         [ <table> tidyverse| ggplot | tidyr | readr |\n             [<table> dplyr|\n                 magrittr | Others]]]]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4d296696227d8661d5f5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4d296696227d8661d5f5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; grey; white\n\n[<table> table | c | 9 ]\n\n[R | [<table> Packages |\n         Base R |\n         [ <table> tidyverse| ggplot | tidyr | readr |\n             [<table> dplyr|\n                 magrittr | Others]]]]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>#fill: lightgreen; lightblue; lightyellow; pink; white
 
 [RStudio | [R | [&lt;table&gt; Packages |
@@ -693,42 +717,21 @@ plot(x, vector = FALSE)</code></pre>
                              | tibble
                              ]
                  | lubridate | DiagrammeR | Lattice]]]</code></pre>
-<div id="htmlwidget-38c27beb88eecf5aa1ee" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-38c27beb88eecf5aa1ee">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; pink; white\n\n[RStudio | [R | [<table> Packages |\n                   Base R | [ tidyverse |\n                               ggplot | tidyr | readr |\n                               [dplyr]--[magrittr]\n                               [dplyr]--[Others]\n                             | tibble\n                             ]\n                 | lubridate | DiagrammeR | Lattice]]]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e47baace9493a7ca487d" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e47baace9493a7ca487d">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; pink; white\n\n[RStudio | [R | [<table> Packages |\n                   Base R | [ tidyverse |\n                               ggplot | tidyr | readr |\n                               [dplyr]--[magrittr]\n                               [dplyr]--[Others]\n                             | tibble\n                             ]\n                 | lubridate | DiagrammeR | Lattice]]]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[Linux]+-[Ubuntu]
 [Linux]+-[Mint]
 [Ubuntu]--[Mint]
 [Linux]+-[Rosa Linux]
 [Linux]+-[Mx Linux]
 [Debian]-+[Linux]
-[Linux]--[Sai]
-[Sai]-+[Sripradha]
+
 
 [Fedora]-+[Linux]
 [Puppy Linux]-+[Linux]
 [Personal Pups]-+[Puppy Linux]</code></pre>
-<div id="htmlwidget-80687ff4c8cc1878f75e" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-80687ff4c8cc1878f75e">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[Linux]+-[Ubuntu]\n[Linux]+-[Mint]\n[Ubuntu]--[Mint]\n[Linux]+-[Rosa Linux]\n[Linux]+-[Mx Linux]\n[Debian]-+[Linux]\n[Linux]--[Sai]\n[Sai]-+[Sripradha]\n\n[Fedora]-+[Linux]\n[Puppy Linux]-+[Linux]\n[Personal Pups]-+[Puppy Linux]\n","svg":false},"evals":[],"jsHooks":[]}</script>
-<pre class="r"><code>plot(plantuml
-(&quot;
-actor Anamika #yellow
-actor Sai #palegreen
-actor Komal #purple
-actor Arvind #Red
-
-Arvind-&gt;Sai: You are also making too much noise!
-Sai-&gt;Arvind : ;-O
-Arvind-&gt;Anamika: You are making too much noise!
-Anamika-&gt;Sai: Hi there!
-Sai-&gt;Anamika: yeah...
-Note left of Anamika: How rude she is!
-Anamika-&gt;Komal: Hey, you done with A3?
-Komal-&gt;Anamika: (*&amp;^%#$^&amp;*)
-
-Arvind-&gt;Ishita: YOU ARE LATE !!
-&quot;))</code></pre>
-<p><img src="Grammar-of-Diagrams_files/figure-html/unnamed-chunk-13-1.png" width="960" /></p>
-<pre><code>## [1] 0</code></pre>
+<div id="htmlwidget-34ae84051261eed3c9b5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-34ae84051261eed3c9b5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[Linux]+-[Ubuntu]\n[Linux]+-[Mint]\n[Ubuntu]--[Mint]\n[Linux]+-[Rosa Linux]\n[Linux]+-[Mx Linux]\n[Debian]-+[Linux]\n\n\n[Fedora]-+[Linux]\n[Puppy Linux]-+[Linux]\n[Personal Pups]-+[Puppy Linux]\n","svg":false},"evals":[],"jsHooks":[]}</script>
 </div>
 
 

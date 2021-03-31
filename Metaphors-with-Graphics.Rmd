@@ -335,9 +335,13 @@ class: middle center inverse
 ---
 
 ## Chunk : penguins-1
-```{r penguins-1, highlight.output=c(1,4:6)}
+
+```{r penguins-1, highlight.output=c(4:6)}
+
 head(penguins)
+
 ```
+
 ---
 
 layout:true
@@ -347,17 +351,19 @@ layout:true
 
 .pull-left[
 
-```{r first-plot1a, eval=FALSE, message=FALSE,warning=FALSE}
+```{r plot1a, eval=FALSE, message=FALSE,warning=FALSE}
 ggplot(penguins) #<<
+
 ```
 ]
 .pull-right[
-```{r first-plot1a-out, ref.label='first-plot1a', echo=FALSE,message=FALSE,warning=FALSE, out.width ="90%"}
+```{r first-plot1a-out, ref.label='plot1a', echo=FALSE,message=FALSE,warning=FALSE, out.width ="90%"}
 ```
 ]
+
 ---
 .pull-left[
-```{r first-plot1b, eval=FALSE, message=FALSE, warning=FALSE}
+```{r plot1b, eval=FALSE, message=FALSE, warning=FALSE}
 ggplot(penguins, 
        aes(x = bill_length_mm,#<<
            y = body_mass_g))  #<<
@@ -365,12 +371,12 @@ ggplot(penguins,
 ]
 
 .pull-right[
-```{r first-plot1b-out, ref.label='first-plot1b', echo=FALSE, message=FALSE,warning=FALSE, out.width="90%"}
+```{r first-plot1b-out, ref.label='plot1b', echo=FALSE, message=FALSE,warning=FALSE, out.width="90%"}
 ```
 ]
 ---
 .pull-left[
-```{r first-plot1c, eval=FALSE, message=FALSE,warning=FALSE}
+```{r plot1c, eval=FALSE, message=FALSE,warning=FALSE}
 ggplot(penguins, 
        aes(x = bill_length_mm, 
            y = body_mass_g)) +
@@ -379,14 +385,14 @@ ggplot(penguins,
 ]
 
 .pull-right[
-```{r first-plot1c-out, ref.label='first-plot1c', echo=FALSE,message=FALSE,warning=FALSE, out.width="90%"}
+```{r first-plot1c-out, ref.label='plot1c', echo=FALSE,message=FALSE,warning=FALSE, out.width="90%"}
 ```
 ]
 
 ---
 
 .pull-left[
-```{r first-plot1d, eval=FALSE, message=FALSE,warning=FALSE}
+```{r plot1d, eval=FALSE, message=FALSE,warning=FALSE}
 ggplot(penguins, 
        aes(x = bill_length_mm, 
            y = body_mass_g)) +
@@ -396,7 +402,7 @@ ggplot(penguins,
 ]
 
 .pull-right[
-```{r first-plot1d-out, ref.label='first-plot1d', echo=FALSE,message=FALSE,warning=FALSE, out.width="90%"}
+```{r first-plot1d-out, ref.label='plot1d', echo=FALSE,message=FALSE,warning=FALSE, out.width="90%"}
 ```
 ]
 ---
@@ -656,3 +662,5 @@ layout:false
 [^4]: [Wilkinson, Leland. (2005). *The Grammar of Graphics*. (UChicago authentication required)](http://link.springer.com.proxy.uchicago.edu/book/10.1007%2F0-387-28695-0)
 
 [^5]: [Lakoff, George. (2005). *Metaphors we live by*. (UChicago authentication required)](http://link.springer.com.proxy.uchicago.edu/book/10.1007%2F0-387-28695-0)
+
+

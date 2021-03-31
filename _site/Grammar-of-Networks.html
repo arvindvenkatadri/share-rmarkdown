@@ -413,7 +413,7 @@ $(document).ready(function () {
 <h4>1.Read the data</h4>
 <pre class="r"><code>starwars_nodes &lt;- read_csv(&quot;./Data/star-wars-network-nodes.csv&quot;)</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   name = col_character(),
 ##   id = col_double()
@@ -422,7 +422,7 @@ $(document).ready(function () {
 
 starwars_edges &lt;- read_csv(&quot;./Data/star-wars-network-edges.csv&quot;)</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   source = col_character(),
 ##   target = col_character(),
@@ -445,7 +445,7 @@ starwars_nodes</code></pre>
 ##  8 LEIA            7
 ##  9 BERU            8
 ## 10 OWEN            9
-## # … with 12 more rows</code></pre>
+## # ... with 12 more rows</code></pre>
 <pre class="r"><code>starwars_edges</code></pre>
 <pre><code>## # A tibble: 60 x 3
 ##    source    target    weight
@@ -460,7 +460,7 @@ starwars_nodes</code></pre>
 ##  8 CHEWBACCA OBI-WAN        7
 ##  9 C-3PO     CHEWBACCA      5
 ## 10 CHEWBACCA LUKE          16
-## # … with 50 more rows</code></pre>
+## # ... with 50 more rows</code></pre>
 <pre class="r"><code>#</code></pre>
 </div>
 <div id="create-a-network-object-using-tidygraph" class="section level4">
@@ -482,7 +482,7 @@ g</code></pre>
 ## 4 LUKE            3
 ## 5 DARTH VADER     4
 ## 6 CAMIE           5
-## # … with 16 more rows
+## # ... with 16 more rows
 ## #
 ## # Edge Data: 60 x 3
 ##    from    to weight
@@ -490,7 +490,7 @@ g</code></pre>
 ## 1     3     1     17
 ## 2     4     1     13
 ## 3    11     1      6
-## # … with 57 more rows</code></pre>
+## # ... with 57 more rows</code></pre>
 <pre class="r"><code>#</code></pre>
 </div>
 <div id="plot-using-ggraph" class="section level4">
@@ -598,6 +598,16 @@ ggraph(g, layout = &quot;linear&quot;) +
   labs(edge_width = &quot;Weight&quot;) +
   theme_graph()+
   theme(legend.position = &quot;top&quot;)</code></pre>
+<pre><code>## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not
+## found in Windows font database
+
+## Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family not
+## found in Windows font database</code></pre>
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database</code></pre>
 <p><img src="Grammar-of-Networks_files/figure-html/arc%20diagram-1.png" width="672" /></p>
 <pre class="r"><code>#############################################</code></pre>
 <pre class="r"><code># Coord diagram, circular
@@ -609,6 +619,17 @@ ggraph(g, layout = &quot;linear&quot;, circular = TRUE) +
   labs(edge_width = &quot;Weight&quot;) +
   theme_graph()+
   theme(legend.position = &quot;top&quot;)</code></pre>
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database</code></pre>
 <p><img src="Grammar-of-Networks_files/figure-html/Coord%20Diagram%20circular-1.png" width="672" /></p>
 <pre class="r"><code>############################################</code></pre>
 </div>
@@ -617,7 +638,7 @@ ggraph(g, layout = &quot;linear&quot;, circular = TRUE) +
 <p>Another Full Example Using Grey’s anatomy dataset</p>
 <pre class="r"><code>grey_nodes &lt;- read_csv(&quot;./Data/greys-nodes.csv&quot;)</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   name = col_character(),
 ##   sex = col_character(),
@@ -633,7 +654,7 @@ ggraph(g, layout = &quot;linear&quot;, circular = TRUE) +
 ##  53  -- 7 columns 8 columns &#39;./Data/greys-nodes.csv&#39;</code></pre>
 <pre class="r"><code>grey_edges &lt;- read_csv(&quot;./Data/greys-edges.csv&quot;)</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
+## -- Column specification --------------------------------------------------------
 ## cols(
 ##   `Leah Murphy` = col_character(),
 ##   `Arizona Robbins` = col_character()
@@ -672,6 +693,17 @@ autograph(ga)</code></pre>
   scale_size(range = c(0.2, 3)) +
   theme_graph() +
   theme(legend.position = &quot;bottom&quot;)</code></pre>
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database
+
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font
+## family not found in Windows font database</code></pre>
 <p><img src="Grammar-of-Networks_files/figure-html/Greys_Anatomy_2-1.png" width="672" /></p>
 </div>
 <div id="make-1" class="section level1">
