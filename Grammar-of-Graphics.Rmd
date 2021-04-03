@@ -4,6 +4,7 @@ author: "Arvind Venkatadri"
 date: "02 Feb 2021"
 output:
   html_document:
+    code_download: true
     toc: yes
     toc_float: yes
     theme: yeti
