@@ -9,6 +9,7 @@ output:
   xaringan::moon_reader:
     lib_ir: libs
     css: ["default", "ninjutsu", "code_demo.css", "fonts_mtheme.css"]
+    # code_download: true
     # yolo: false
     #   img: images/Scottish_Fold_Cat.jpg 
     #   times: 5

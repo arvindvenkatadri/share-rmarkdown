@@ -34,6 +34,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
@@ -65,6 +67,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -225,6 +232,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -363,6 +373,13 @@ div.tocify {
 </div><!--/.navbar -->
 
 <div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
 
 
 
@@ -549,8 +566,8 @@ plot(x, vector = FALSE)</code></pre>
 
 //implementation --:&gt;
 [k]--:&gt;[d]</code></pre>
-<div id="htmlwidget-dd0580eb3c066d635236" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dd0580eb3c066d635236">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//association-1\n[a] - [b] \n\n//association-2\n[b] -> [c] \n\n//association_3\n[c] <-> [a]\n\n//dependency-1\n[a] <-->[d]\n\n//dependency-2\n#.ell: visual=ellipse fill=#fbfb09 bold\n#.arvind: visual=rhomb fill=#ff2234 bold\n[<ell>e]-->[a]\n//generalization-1\n[c]-:>[<arvind>k]\n\n//implementation --:>\n[k]--:>[d]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e3f334d92622da5186ab" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e3f334d92622da5186ab">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//association-1\n[a] - [b] \n\n//association-2\n[b] -> [c] \n\n//association_3\n[c] <-> [a]\n\n//dependency-1\n[a] <-->[d]\n\n//dependency-2\n#.ell: visual=ellipse fill=#fbfb09 bold\n#.arvind: visual=rhomb fill=#ff2234 bold\n[<ell>e]-->[a]\n//generalization-1\n[c]-:>[<arvind>k]\n\n//implementation --:>\n[k]--:>[d]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>//composition +-
 [a]+-[b]
 //composition +-&gt;
@@ -568,8 +585,8 @@ plot(x, vector = FALSE)</code></pre>
 //[k]_&gt;[d] //not working
 //weightless dashed__
 //[d]__[j] //not working</code></pre>
-<div id="htmlwidget-1769c1c2964c147226f7" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1769c1c2964c147226f7">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//composition +-\n[a]+-[b]\n//composition +->\n[b]-+[c]\n//aggregation o-\n[c]o->[d]\n//aggregation o->\n[d]o->[a]\n//note --\n[d]--[everything happens;here]\n//hidden -/-\n[d]-/-[f]\n////////////////////////\n//weightless edge _>\n//[k]_>[d] //not working\n//weightless dashed__\n//[d]__[j] //not working","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5adcd6d91de9bb284379" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5adcd6d91de9bb284379">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n//composition +-\n[a]+-[b]\n//composition +->\n[b]-+[c]\n//aggregation o-\n[c]o->[d]\n//aggregation o->\n[d]o->[a]\n//note --\n[d]--[everything happens;here]\n//hidden -/-\n[d]-/-[f]\n////////////////////////\n//weightless edge _>\n//[k]_>[d] //not working\n//weightless dashed__\n//[d]__[j] //not working","svg":false},"evals":[],"jsHooks":[]}</script>
 <div id="classifier-types" class="section level3">
 <h3>Classifier Types</h3>
 <p>These are different kinds of <strong>blocks</strong>.</p>
@@ -582,18 +599,18 @@ plot(x, vector = FALSE)</code></pre>
 [&lt;abstract&gt; abstract]-:&gt;[&lt;instance&gt; instance]
 [&lt;instance&gt; instance]-:&gt;[&lt;note&gt; note]
 [&lt;note&gt; note]--&gt;[&lt;reference&gt; reference]</code></pre>
-<div id="htmlwidget-e2c4c9d58e51857ce254" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e2c4c9d58e51857ce254">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#direction:down\n#background:lightgrey\n#fill: fuchsia; green; purple\n#fillArrows: false\n#font: Courier\n[class]->[<abstract> abstract]\n[<abstract> abstract]-:>[<instance> instance]\n[<instance> instance]-:>[<note> note]\n[<note> note]-->[<reference> reference]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5f33d740f208e8729077" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5f33d740f208e8729077">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#direction:down\n#background:lightgrey\n#fill: fuchsia; green; purple\n#fillArrows: false\n#font: Courier\n[class]->[<abstract> abstract]\n[<abstract> abstract]-:>[<instance> instance]\n[<instance> instance]-:>[<note> note]\n[<note> note]-->[<reference> reference]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;package&gt; package|components]--&gt;[&lt;frame&gt; frame|]
 [&lt;database&gt; database]--&gt;[&lt;start&gt; start]
 [&lt;end&gt; end]-o&gt;[&lt;state&gt; state]</code></pre>
-<div id="htmlwidget-d30da43d20aee233f504" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d30da43d20aee233f504">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<package> package|components]-->[<frame> frame|]\n[<database> database]-->[<start> start]\n[<end> end]-o>[<state> state]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-53a4c84aaf1a22d20ff7" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-53a4c84aaf1a22d20ff7">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<package> package|components]-->[<frame> frame|]\n[<database> database]-->[<start> start]\n[<end> end]-o>[<state> state]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;choice&gt; choice]---&gt;[&lt;sync&gt; sync]
 [&lt;input&gt; input]-&gt;[&lt;sender&gt; sender]
 [&lt;receiver&gt; receiver]o-[&lt;transceiver&gt; transceiver]</code></pre>
-<div id="htmlwidget-4392bf67a705e3c7439b" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4392bf67a705e3c7439b">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<choice> choice]--->[<sync> sync]\n[<input> input]->[<sender> sender]\n[<receiver> receiver]o-[<transceiver> transceiver]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-aacb7e9a27ba8822b112" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aacb7e9a27ba8822b112">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<choice> choice]--->[<sync> sync]\n[<input> input]->[<sender> sender]\n[<receiver> receiver]o-[<transceiver> transceiver]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>#font: CenturySchoolbook
 #fill: lightyellow
 #stroke: green
@@ -601,14 +618,14 @@ plot(x, vector = FALSE)</code></pre>
 [&lt;actor&gt; actor]---[&lt;usecase&gt; usecase]
 [&lt;usecase&gt; usecase]&lt;--&gt;[&lt;label&gt; label]
 [&lt;usecase&gt; usecase]-/-[&lt;hidden&gt; hidden]</code></pre>
-<div id="htmlwidget-22147048fa2413deb6a5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-22147048fa2413deb6a5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#font: CenturySchoolbook\n#fill: lightyellow\n#stroke: green\n\n[<actor> actor]---[<usecase> usecase]\n[<usecase> usecase]<-->[<label> label]\n[<usecase> usecase]-/-[<hidden> hidden]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4b614fb47eb0c70496c6" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b614fb47eb0c70496c6">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#font: CenturySchoolbook\n#fill: lightyellow\n#stroke: green\n\n[<actor> actor]---[<usecase> usecase]\n[<usecase> usecase]<-->[<label> label]\n[<usecase> usecase]-/-[<hidden> hidden]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;table&gt; table| a | 5 || b | 7]</code></pre>
-<div id="htmlwidget-8fae386df67fff5ff7a0" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8fae386df67fff5ff7a0">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| a | 5 || b | 7]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-aae8f4fa128eee2d24de" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aae8f4fa128eee2d24de">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| a | 5 || b | 7]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[&lt;table&gt; table| c | 9 ]</code></pre>
-<div id="htmlwidget-869278a76b5de05c1b24" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-869278a76b5de05c1b24">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| c | 9 ]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8276b3f49a872ca1d9af" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8276b3f49a872ca1d9af">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[<table> table| c | 9 ]","svg":false},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="directives" class="section level2">
@@ -661,8 +678,8 @@ plot(x, vector = FALSE)</code></pre>
 [more loot] no -&gt;[&lt;end&gt;e]
 
 [&lt;actor&gt;Sailor] - [&lt;usecase&gt;shiver me;timbers]</code></pre>
-<div id="htmlwidget-99d57bdb66a532eecc02" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-99d57bdb66a532eecc02">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#import: filename\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down | right\n#gutter: 5\n#edgeMargin: 0\n#gravity: 1\n#edges: hard | rounded\n#background: lightgrey\n\n//nested list of colours\n//#fill: #fcfcfc; #eee8d5; #fdf6e3\n#fill: lightgreen; pink;\n#fillArrows: false\n#font: Calibri\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 8\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex | tight-tree | longest-path\n[Pirate|eyeCount: Int|raid()|pillage()|\n  [beard]--[parrot]\n  [beard]-:>[foul mouth]\n  ]\n\n[<table>mischief | bawl | sing || yell | drink]\n\n[<abstract>Marauder]<:--[Pirate]\n[Pirate]- 0..7[mischief]\n[jollyness]_>[Pirate]\n[jollyness]->[rum]\n[jollyness]->[singing]\n[Pirate]-> *[rum|tastiness: Int|swig()]\n[Pirate]->[singing]\n[singing]<->[rum]\n\n[<start>st]->[<state>plunder]\n[plunder]->[<choice>more loot]\n[more loot]->[st]\n[more loot] no ->[<end>e]\n\n[<actor>Sailor] - [<usecase>shiver me;timbers]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-09567671c26a7631d0eb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-09567671c26a7631d0eb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#import: filename\n#arrowSize: 1\n#bendSize: 0.3\n#direction: down | right\n#gutter: 5\n#edgeMargin: 0\n#gravity: 1\n#edges: hard | rounded\n#background: lightgrey\n\n//nested list of colours\n//#fill: #fcfcfc; #eee8d5; #fdf6e3\n#fill: lightgreen; pink;\n#fillArrows: false\n#font: Calibri\n#fontSize: 12\n#leading: 1.25\n#lineWidth: 3\n#padding: 8\n#spacing: 40\n#stroke: #33322E\n#title: filename\n#zoom: 1\n#acyclicer: greedy\n#ranker: network-simplex | tight-tree | longest-path\n[Pirate|eyeCount: Int|raid()|pillage()|\n  [beard]--[parrot]\n  [beard]-:>[foul mouth]\n  ]\n\n[<table>mischief | bawl | sing || yell | drink]\n\n[<abstract>Marauder]<:--[Pirate]\n[Pirate]- 0..7[mischief]\n[jollyness]_>[Pirate]\n[jollyness]->[rum]\n[jollyness]->[singing]\n[Pirate]-> *[rum|tastiness: Int|swig()]\n[Pirate]->[singing]\n[singing]<->[rum]\n\n[<start>st]->[<state>plunder]\n[plunder]->[<choice>more loot]\n[more loot]->[st]\n[more loot] no ->[<end>e]\n\n[<actor>Sailor] - [<usecase>shiver me;timbers]","svg":false},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="custom-classifier-styles" class="section level2">
 <h2>Custom classifier styles</h2>
@@ -673,8 +690,8 @@ plot(x, vector = FALSE)</code></pre>
 [&lt;box&gt; GreenBox]
 [&lt;blob&gt; Blobby]
 [&lt;arvind&gt; Someone]</code></pre>
-<div id="htmlwidget-186d9a9d675d3ab42eda" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-186d9a9d675d3ab42eda">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#.box: fill=#8f8 dashed\n#.blob: visual=ellipse title=bold\n#.arvind: visual=rhomb title=bold dashed fill=CornFlowerBlue\n[<box> GreenBox]\n[<blob> Blobby]\n[<arvind> Someone]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3953a3271548f740951f" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3953a3271548f740951f">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#.box: fill=#8f8 dashed\n#.blob: visual=ellipse title=bold\n#.arvind: visual=rhomb title=bold dashed fill=CornFlowerBlue\n[<box> GreenBox]\n[<blob> Blobby]\n[<arvind> Someone]","svg":false},"evals":[],"jsHooks":[]}</script>
 <p>##Key/value pairs fill=(any css color) stroke=(any css color) align=center align=left direction=right direction=down</p>
 <p>visual=actor visual=class visual=database visual=ellipse visual=end visual=frame visual=hidden visual=input visual=none visual=note visual=package visual=receiver visual=rhomb visual=roundrect visual=sender visual=start visual=sync visual=table visual=transceiver Style title and text body title=left,italic,bold body=center,italic,bold</p>
 </div>
@@ -688,14 +705,14 @@ plot(x, vector = FALSE)</code></pre>
 [B]--[&lt;usecase&gt;C]
 [C]-[&lt;box&gt; D]
 [B]--[&lt;blob&gt; Jabba;TheHut]</code></pre>
-<div id="htmlwidget-850248255457b08ce1fd" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-850248255457b08ce1fd">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n# .box: fill=#8f8 dashed\n# .blob: visual=rhomb title=bold fill=#8f8 dashed\n\n[A]-[B]\n[B]--[<usecase>C]\n[C]-[<box> D]\n[B]--[<blob> Jabba;TheHut]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-76ea936a70d10e07d872" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-76ea936a70d10e07d872">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n# .box: fill=#8f8 dashed\n# .blob: visual=rhomb title=bold fill=#8f8 dashed\n\n[A]-[B]\n[B]--[<usecase>C]\n[C]-[<box> D]\n[B]--[<blob> Jabba;TheHut]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[a] -&gt;[b]
 [b] -:&gt; [c]
 [c]o-&gt;[d]
 [d]-/-[e]</code></pre>
-<div id="htmlwidget-6660e1e9f0411b9ef2fa" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6660e1e9f0411b9ef2fa">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[a] ->[b]\n[b] -:> [c]\n[c]o->[d]\n[d]-/-[e]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ed6308c23f3779fcc597" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ed6308c23f3779fcc597">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[a] ->[b]\n[b] -:> [c]\n[c]o->[d]\n[d]-/-[e]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>#fill: lightgreen; lightblue; lightyellow; grey; white
 
 [&lt;table&gt; table | c | 9 ]
@@ -705,8 +722,8 @@ plot(x, vector = FALSE)</code></pre>
          [ &lt;table&gt; tidyverse| ggplot | tidyr | readr |
              [&lt;table&gt; dplyr|
                  magrittr | Others]]]]</code></pre>
-<div id="htmlwidget-4d296696227d8661d5f5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4d296696227d8661d5f5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; grey; white\n\n[<table> table | c | 9 ]\n\n[R | [<table> Packages |\n         Base R |\n         [ <table> tidyverse| ggplot | tidyr | readr |\n             [<table> dplyr|\n                 magrittr | Others]]]]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-772e015f3056332c67a3" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-772e015f3056332c67a3">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; grey; white\n\n[<table> table | c | 9 ]\n\n[R | [<table> Packages |\n         Base R |\n         [ <table> tidyverse| ggplot | tidyr | readr |\n             [<table> dplyr|\n                 magrittr | Others]]]]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>#fill: lightgreen; lightblue; lightyellow; pink; white
 
 [RStudio | [R | [&lt;table&gt; Packages |
@@ -717,8 +734,8 @@ plot(x, vector = FALSE)</code></pre>
                              | tibble
                              ]
                  | lubridate | DiagrammeR | Lattice]]]</code></pre>
-<div id="htmlwidget-e47baace9493a7ca487d" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e47baace9493a7ca487d">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; pink; white\n\n[RStudio | [R | [<table> Packages |\n                   Base R | [ tidyverse |\n                               ggplot | tidyr | readr |\n                               [dplyr]--[magrittr]\n                               [dplyr]--[Others]\n                             | tibble\n                             ]\n                 | lubridate | DiagrammeR | Lattice]]]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a03f0d7acbde96e54142" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a03f0d7acbde96e54142">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n#fill: lightgreen; lightblue; lightyellow; pink; white\n\n[RStudio | [R | [<table> Packages |\n                   Base R | [ tidyverse |\n                               ggplot | tidyr | readr |\n                               [dplyr]--[magrittr]\n                               [dplyr]--[Others]\n                             | tibble\n                             ]\n                 | lubridate | DiagrammeR | Lattice]]]","svg":false},"evals":[],"jsHooks":[]}</script>
 <pre class="nomnoml"><code>[Linux]+-[Ubuntu]
 [Linux]+-[Mint]
 [Ubuntu]--[Mint]
@@ -730,10 +747,11 @@ plot(x, vector = FALSE)</code></pre>
 [Fedora]-+[Linux]
 [Puppy Linux]-+[Linux]
 [Personal Pups]-+[Puppy Linux]</code></pre>
-<div id="htmlwidget-34ae84051261eed3c9b5" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-34ae84051261eed3c9b5">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[Linux]+-[Ubuntu]\n[Linux]+-[Mint]\n[Ubuntu]--[Mint]\n[Linux]+-[Rosa Linux]\n[Linux]+-[Mx Linux]\n[Debian]-+[Linux]\n\n\n[Fedora]-+[Linux]\n[Puppy Linux]-+[Linux]\n[Personal Pups]-+[Puppy Linux]\n","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4bd2a169005108d9cea4" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4bd2a169005108d9cea4">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n[Linux]+-[Ubuntu]\n[Linux]+-[Mint]\n[Ubuntu]--[Mint]\n[Linux]+-[Rosa Linux]\n[Linux]+-[Mx Linux]\n[Debian]-+[Linux]\n\n\n[Fedora]-+[Linux]\n[Puppy Linux]-+[Linux]\n[Personal Pups]-+[Puppy Linux]\n","svg":false},"evals":[],"jsHooks":[]}</script>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiR3JhbW1hciBvZiBEaWFncmFtczogdXNpbmcgVW5pdmVyc2FsIE1hcmt1cCBMYW5ndWFnZSBpbiBSIgphdXRob3I6IFlPVVIgTkFNRSBIRVJFCm91dHB1dDogCiAgaHRtbF9kb2N1bWVudDoKICAgIHRvY19mbG9hdDogVFJVRQogICAgY29kZV9kb3dubG9hZDogdHJ1ZQotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KG5vbW5vbWwpCgojIFJ1biB0aGVzZSBjb21tZW50ZWQgbGluZXMgb25jZQojIGRldnRvb2xzOjppbnN0YWxsX2dpdGh1YigicmtydWcvcGxhbnR1bWwiKQojIHBsYW50dW1sX3VwZGF0ZSgpCgpsaWJyYXJ5KHBsYW50dW1sKQpgYGAKCgojIyBVc2luZyBgcGxhbnRVTUxgIHRvIG1ha2UgRGlhZ3JhbXMgZnJvbSBUZXh0CgojIyMgYFBsYW50VU1MYCBTZXF1ZW5jZSBEaWFncmFtCgpgYGB7ciBTZXF1ZW5jZV9EaWFncmFtXzF9CnBsYW50dW1sKAoic2tpbnBhcmFtIGhhbmR3cml0dGVuIHRydWUKQWxpY2UgLT4gQm9iOiBBdXRoZW50aWNhdGlvbiBSZXF1ZXN0CkFsaWNlIDwtIEJvYjogQXV0aGVudGljYXRpb24gUmVzcG9uc2UKQWxpY2UgLT4gQm9iOiBBbm90aGVyIGF1dGhlbnRpY2F0aW9uIFJlcXVlc3QKCm5vdGUgb3ZlciBBbGljZSwgQm9iICNwYWxlZ3JlZW46IFdoYXQgdGhlIGhlbGw/Cm5vdGUgcmlnaHQgb2YgQm9iICNwaW5rOiBXaGF0IGRvZXMgc2hlIHdhbnQgISEKCkFsaWNlIDwtIEJvYjogQW5vdGhlciBhdXRoZW50aWNhdGlvbiBSZXNwb25zZQpub3RlIGxlZnQgb2YgQWxpY2UgI3JlZDogVGhlIGxhenkgYnVtLi4uLiIKKSAlPiUgCiAgcGxvdCguLCB2ZWN0b3IgPSBGQUxTRSkKCmBgYAoKIyMgU2VxdWVuY2UgRGlhZ3JhbS0yCgpgYGB7ciBzZXF1ZW5jZS1kaWFncmFtLTIsIGZpZy53aWR0aCA9IDEwLCBmaWcuaGVpZ2h0ID0gMTV9CnBsb3QocGxhbnR1bWwKKCIKYWN0b3IgQW5hbWlrYSAjeWVsbG93CmFjdG9yIFNhaSAjcGFsZWdyZWVuCmFjdG9yIEtvbWFsICNwdXJwbGUKYWN0b3IgQXJ2aW5kICNSZWQKCkFydmluZC0+U2FpOiBZb3UgYXJlIGFsc28gbWFraW5nIHRvbyBtdWNoIG5vaXNlIQpTYWktPkFydmluZCA6IDstTwpBcnZpbmQtPkFuYW1pa2E6IFlvdSBhcmUgbWFraW5nIHRvbyBtdWNoIG5vaXNlIQpBbmFtaWthLT5TYWk6IEhpIHRoZXJlIQpTYWktPkFuYW1pa2E6IHllYWguLi4KTm90ZSBsZWZ0IG9mIEFuYW1pa2E6IEhvdyBydWRlIHNoZSBpcyEKQW5hbWlrYS0+S29tYWw6IEhleSwgeW91IGRvbmUgd2l0aCBBMz8KS29tYWwtPkFuYW1pa2E6ICgqJl4lIyReJiopCgpBcnZpbmQtPklzaGl0YTogWU9VIEFSRSBMQVRFICEhCiIpLHZlY3RvciA9IEZBTFNFCikKCmBgYAoKCiMjIyBTZXF1ZW5jZSBEaWFncmFtIDMKCmBgYHtyIENvbXBsZXhfU2VxdWVuY2VfRGlhZ3JhbV8zLCBmaWcud2lkdGggPSAxMCwgZmlnLmhlaWdodCA9IDE1fQpwbG90KHBsYW50dW1sCigiCmFjdG9yIEFwcGEgI3llbGxvdwphY3RvciBTaHViaGEgI3BhbGVncmVlbgoKYm94IFwiUGFyZW50aW5nIENoYWxsZW5nZXNcIiAjTGlnaHRibHVlCnBhcnRpY2lwYW50IEFwcGEKcGFydGljaXBhbnQgU2h1YmhhCgpBcHBhLT5TaHViaGE6IEhpIENodWJidSEKLi4uU0VWRVJBTCBtaW51dGVzIGxhdGVyLi4uClNodWJoYS0tWyNGRjEzMzNdLT5BcHBhOiBZZWFoLi4uCkFwcGEtWyNyZWRdPj5TaHViaGE6IFllbm5hIENodWJidS4uLgpTaHViaGEtPkFwcGE6IElcJ20gYm9yZWQKCmFsdCBBcHBhIGlzIGFuZ3J5CiAgQXBwYS0+IFNodWJoYTogQ2h1YmJ1IHlvdSBuZWVkIHRvIGJlIG1vcmUgZW50aHUhIQogIG5vdGUgb3ZlciBBcHBhLFNodWJoYSAjcGluawogICAgU2hlIF9fbmV2ZXJfXyBkb2VzICoqYW55dGhpbmcqKiB1c2VmdWwuLi4KICBlbmQgbm90ZQogIAogIEFwcGEtPlNodWJoYTogV2h5IGFyZW5cJ3QgeW91IHJlYWRpbmcgc29tZXRoaW5nPyEhCiAgU2h1YmhhIC0+IEFwcGE6Oy0oCiAgCiAgbm90ZSByaWdodCBvZiBTaHViaGEgI2FxdWEKICAgIFdoeSBkb2VzblwndCBoZSBnbyB0byBvZmZpY2U/CiAgZW5kIG5vdGUKZW5kCgphbHQgQXBwYSBpcyB5ZWFoLCBsaWtlLCBjb29sCiAgQXBwYS0+U2h1YmhhOiBQb2RpLiBDYW4geW91IHNvbHZlOiA8bWF0aD4oYXheMiArIGJ4ICsgYyA9IDApPC9tYXRoPj8KICBTaHViaGEtPkFwcGE6IEFwcGEuLi4KICBBcHBhLT4gU2h1YmhhOiBPaywgT2suLi5jYW4gd2UgZ2V0IHBpenphPwogIFNodWJoYS0+QXBwYTo7LUQKZW5kIGJveAplbmQKIiksIHZlY3RvciA9IEZBTFNFCikKYGBgCgojIyBQbGFudFVNTCBNaW5kbWFwCgpgYGB7ciBNaW5kbWFwfQpwbG90KApwbGFudHVtbCgiCiAgQHN0YXJ0bWluZG1hcAorIE9TCisrIFVidW50dQorKysgTGludXggTWludAorKysgS3VidW50dQorKysgTHVidW50dQorKysgS0RFIE5lb24KKysgTE1ERQorKyBTb2x5ZFhLCisrIFN0ZWFtT1MKKysgUmFzcGJpYW4KLS0gV2luZG93cyA5NQotLSBXaW5kb3dzIDk4Ci0tIFdpbmRvd3MgTlQKLS0tIFdpbmRvd3MgOAotLS0gV2luZG93cyAxMApAZW5kbWluZG1hcCIpLHZlY3RvciA9IEZBTFNFKQpgYGAKCiMjIGBQbGFudFVNTGAgR2FudHQgQ2hhcnQKCmBgYHtyIFBsYW50VU1MX0dhbnR0fQpwbG90KHBsYW50dW1sCigiCiAgW0Fzc2lnbm1lbnQgQTFdIGxhc3RzIDYgZGF5cyBhbmQgaXMgY29sb3JlZCBpbiBMYXZlbmRlci9CbHVlCiAgW0Fzc2lnbm1lbnQgQTJdIGxhc3RzIDEwIGRheXMgYW5kIGlzIGNvbG9yZWQgaW4gTGF2ZW5kZXIvQmx1ZSBhbmQgc3RhcnRzIGF0ICAgICAgW0Fzc2lnbm1lbnQgQTFdJ3MgZW5kCiAgW0Fzc2lnbm1lbnQgQTNdIGxhc3RzIDggZGF5cyBhbmQgaXMgY29sb3JlZCBpbiBMYXZlbmRlci9CbHVlIGFuZCBzdGFydHMgYXQgW0Fzc2lnbm1lbnQgQTJdJ3MgZW5kCiAgW0VuZCBvZiBDb3Vyc2VdIGxhc3RzIDEgZGF5cyBhbmQgaXMgY29sb3JlZCBpbiBSZWQgYW5kIHN0YXJ0cyAyIGRheXMgYWZ0ZXIgW0Fzc2lnbm1lbnQgQTNdJ3MgZW5kIAogIAogIFtSZWZsZWN0aW9uIFdyaXRpbmddIGxhc3RzIDMwIGRheXMgYW5kIGVuZHMgYXQgW0Fzc2lnbm1lbnQgQTNdJ3MgZW5kCiAgW01ha2UgVmlzdWFsIEpvdXJuYWxdIGxhc3RzIDkgZGF5cyBhbmQgaXMgY29sb3JlZCBpbiBDb3JhbC9HcmVlbiBhbmQgc3RhcnRzIDMgICAgICAgZGF5cyBhZnRlciBbQXNzaWdubWVudCBBMV0ncyBlbmQKICBbTWFrZSBQb3N0ZXIgZm9yIEhvbWUgQWxvbmVdIGxhc3RzIDUgZGF5cyBhbmQgc3RhcnRzIDMgZGF5cyBhZnRlciBbQXNzaWdubWVudCBBMl0ncyBlbmQKICBbQ2xlYW4gdXAgTWlybyBCb2FyZF0gbGFzdHMgMSBkYXlzIGFuZCBzdGFydHMgYXQgW0Fzc2lnbm1lbnQgQTNdJ3MgZW5kIGFuZCBlbmRzIGF0IFtFbmQgb2YgQ291cnNlXSdzIGVuZAogICIpLHZlY3RvciA9IEZBTFNFCikKIApgYGAKCgojIyBQbGFudFVNTCBmbG93IGNoYXJ0CmBgYHtyIEZsb3dfY2hhcnR9CnggPC0geyAjIGJyYWNlcyBhcmUgbm90IG5lZWRlZAonCigqKSAtLT4gIkluaXRpYWxpemF0aW9uIgppZiAiU29tZSBUZXN0IiB0aGVuCiAgLS0+W3RydWVdICJTb21lIEFjdGl2aXR5IgogIC0tPiAiQW5vdGhlciBBY3Rpdml0eSIKICAtcmlnaHQtPiAoKikKZWxzZQogIC0+W2ZhbHNlXSAiU29tZXRoaW5nIEVsc2UiCiAgLS0+IFtFbmRpbmcgUHJvY2Vzc10gKCopCmVuZGlmCicKfQoKeCA8LSBwbGFudHVtbCh4ID0geCkKcGxvdCh4LCB2ZWN0b3IgPSBGQUxTRSkKYGBgCgojIyBVc2luZyBgbm9tbm9tbGAKClRoZSBzeW50YXggb3B0aW9ucyBmb3Igbm9tbm9tbCBhbmQgd2hhdCBjYW4gYmUgY3JlYXRlZCBpcyBkZXNjcmliZWQgaGVyZSA8aHR0cHM6Ly9ub21ub21sLmNvbS8+CgoKQXNzb2NpYXRpb24gdHlwZXMgYXJlIGNvbm5lY3RvcnMgYmV0d2VlbiBibG9ja3MoIGkuZS4gQ2xhc3NpZmllcnMpCgpDU1MgY29sb3VycyA8aHR0cHM6Ly93d3cudzNzY2hvb2xzLmNvbS9jc3NyZWYvY3NzX2NvbG9ycy5hc3A+Ck9ubHkgdGhlc2UgY29sb3VycyBhcmUgcGVybWl0dGVkLCBzbyB1c2UgZWl0aGVyIHRoZSBuYW1lcyBvciB0aGVzZSBzcGVjaWZpYyBjb2xvdXIgaGFzaCBjb2Rlcy4gQW55IGdlbmVyYWwgaGFzaCBjb2RlIHdpbGwgKm5vdCogcmVuZGVyLgoKCmBgYHtub21ub21sIGFzc29jaWF0aW9uLTF9Ci8vYXNzb2NpYXRpb24tMQpbYV0gLSBbYl0gCgovL2Fzc29jaWF0aW9uLTIKW2JdIC0+IFtjXSAKCi8vYXNzb2NpYXRpb25fMwpbY10gPC0+IFthXQoKLy9kZXBlbmRlbmN5LTEKW2FdIDwtLT5bZF0KCi8vZGVwZW5kZW5jeS0yCiMuZWxsOiB2aXN1YWw9ZWxsaXBzZSBmaWxsPSNmYmZiMDkgYm9sZAojLmFydmluZDogdmlzdWFsPXJob21iIGZpbGw9I2ZmMjIzNCBib2xkCls8ZWxsPmVdLS0+W2FdCi8vZ2VuZXJhbGl6YXRpb24tMQpbY10tOj5bPGFydmluZD5rXQoKLy9pbXBsZW1lbnRhdGlvbiAtLTo+CltrXS0tOj5bZF0KYGBgCgoKYGBge25vbW5vbWwgYXNzb2NpYXRpb24tMixzdmc9VFJVRX0KLy9jb21wb3NpdGlvbiArLQpbYV0rLVtiXQovL2NvbXBvc2l0aW9uICstPgpbYl0tK1tjXQovL2FnZ3JlZ2F0aW9uIG8tCltjXW8tPltkXQovL2FnZ3JlZ2F0aW9uIG8tPgpbZF1vLT5bYV0KLy9ub3RlIC0tCltkXS0tW2V2ZXJ5dGhpbmcgaGFwcGVucztoZXJlXQovL2hpZGRlbiAtLy0KW2RdLS8tW2ZdCi8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLwovL3dlaWdodGxlc3MgZWRnZSBfPgovL1trXV8+W2RdIC8vbm90IHdvcmtpbmcKLy93ZWlnaHRsZXNzIGRhc2hlZF9fCi8vW2RdX19bal0gLy9ub3Qgd29ya2luZwpgYGAKCgojIyMgQ2xhc3NpZmllciBUeXBlcwpUaGVzZSBhcmUgZGlmZmVyZW50IGtpbmRzIG9mICoqYmxvY2tzKiouCgpgYGB7bm9tbm9tbCwgc3ZnPVRSVUV9CiNkaXJlY3Rpb246ZG93bgojYmFja2dyb3VuZDpsaWdodGdyZXkKI2ZpbGw6IGZ1Y2hzaWE7IGdyZWVuOyBwdXJwbGUKI2ZpbGxBcnJvd3M6IGZhbHNlCiNmb250OiBDb3VyaWVyCltjbGFzc10tPls8YWJzdHJhY3Q+IGFic3RyYWN0XQpbPGFic3RyYWN0PiBhYnN0cmFjdF0tOj5bPGluc3RhbmNlPiBpbnN0YW5jZV0KWzxpbnN0YW5jZT4gaW5zdGFuY2VdLTo+Wzxub3RlPiBub3RlXQpbPG5vdGU+IG5vdGVdLS0+WzxyZWZlcmVuY2U+IHJlZmVyZW5jZV0KYGBgCmBgYHtub21ub21sfQpbPHBhY2thZ2U+IHBhY2thZ2V8Y29tcG9uZW50c10tLT5bPGZyYW1lPiBmcmFtZXxdCls8ZGF0YWJhc2U+IGRhdGFiYXNlXS0tPls8c3RhcnQ+IHN0YXJ0XQpbPGVuZD4gZW5kXS1vPls8c3RhdGU+IHN0YXRlXQpgYGAKYGBge25vbW5vbWx9Cls8Y2hvaWNlPiBjaG9pY2VdLS0tPls8c3luYz4gc3luY10KWzxpbnB1dD4gaW5wdXRdLT5bPHNlbmRlcj4gc2VuZGVyXQpbPHJlY2VpdmVyPiByZWNlaXZlcl1vLVs8dHJhbnNjZWl2ZXI+IHRyYW5zY2VpdmVyXQpgYGAKCmBgYHtub21ub21sfQojZm9udDogQ2VudHVyeVNjaG9vbGJvb2sKI2ZpbGw6IGxpZ2h0eWVsbG93CiNzdHJva2U6IGdyZWVuCgpbPGFjdG9yPiBhY3Rvcl0tLS1bPHVzZWNhc2U+IHVzZWNhc2VdCls8dXNlY2FzZT4gdXNlY2FzZV08LS0+WzxsYWJlbD4gbGFiZWxdCls8dXNlY2FzZT4gdXNlY2FzZV0tLy1bPGhpZGRlbj4gaGlkZGVuXQpgYGAKCmBgYHtub21ub21sfQpbPHRhYmxlPiB0YWJsZXwgYSB8IDUgfHwgYiB8IDddCmBgYAoKYGBge25vbW5vbWx9Cls8dGFibGU+IHRhYmxlfCBjIHwgOSBdCmBgYAojIyBEaXJlY3RpdmVzCkRpcmVjdGl2ZXMgY2hhbmdlIHRoZSBuYXR1cmUgb2YgdGhlIGRpYWdyYW0gcmVuZGVyZWQsIGJ5IGFmZmVjdGl2ZSBwYXJhbWV0ZXJzIGxpa2UgY29sb3VyLCBkaXJlY3Rpb24gYW5kIG1hcmdpbnMuIAoKYGBge25vbW5vbWx9CiNpbXBvcnQ6IGZpbGVuYW1lCiNhcnJvd1NpemU6IDEKI2JlbmRTaXplOiAwLjMKI2RpcmVjdGlvbjogZG93biB8IHJpZ2h0CiNndXR0ZXI6IDUKI2VkZ2VNYXJnaW46IDAKI2dyYXZpdHk6IDEKI2VkZ2VzOiBoYXJkIHwgcm91bmRlZAojYmFja2dyb3VuZDogbGlnaHRncmV5CgovL25lc3RlZCBsaXN0IG9mIGNvbG91cnMKLy8jZmlsbDogI2ZjZmNmYzsgI2VlZThkNTsgI2ZkZjZlMwojZmlsbDogbGlnaHRncmVlbjsgcGluazsKI2ZpbGxBcnJvd3M6IGZhbHNlCiNmb250OiBDYWxpYnJpCiNmb250U2l6ZTogMTIKI2xlYWRpbmc6IDEuMjUKI2xpbmVXaWR0aDogMwojcGFkZGluZzogOAojc3BhY2luZzogNDAKI3N0cm9rZTogIzMzMzIyRQojdGl0bGU6IGZpbGVuYW1lCiN6b29tOiAxCiNhY3ljbGljZXI6IGdyZWVkeQojcmFua2VyOiBuZXR3b3JrLXNpbXBsZXggfCB0aWdodC10cmVlIHwgbG9uZ2VzdC1wYXRoCltQaXJhdGV8ZXllQ291bnQ6IEludHxyYWlkKCl8cGlsbGFnZSgpfAogIFtiZWFyZF0tLVtwYXJyb3RdCiAgW2JlYXJkXS06Pltmb3VsIG1vdXRoXQogIF0KCls8dGFibGU+bWlzY2hpZWYgfCBiYXdsIHwgc2luZyB8fCB5ZWxsIHwgZHJpbmtdCgpbPGFic3RyYWN0Pk1hcmF1ZGVyXTw6LS1bUGlyYXRlXQpbUGlyYXRlXS0gMC4uN1ttaXNjaGllZl0KW2pvbGx5bmVzc11fPltQaXJhdGVdCltqb2xseW5lc3NdLT5bcnVtXQpbam9sbHluZXNzXS0+W3NpbmdpbmddCltQaXJhdGVdLT4gKltydW18dGFzdGluZXNzOiBJbnR8c3dpZygpXQpbUGlyYXRlXS0+W3NpbmdpbmddCltzaW5naW5nXTwtPltydW1dCgpbPHN0YXJ0PnN0XS0+WzxzdGF0ZT5wbHVuZGVyXQpbcGx1bmRlcl0tPls8Y2hvaWNlPm1vcmUgbG9vdF0KW21vcmUgbG9vdF0tPltzdF0KW21vcmUgbG9vdF0gbm8gLT5bPGVuZD5lXQoKWzxhY3Rvcj5TYWlsb3JdIC0gWzx1c2VjYXNlPnNoaXZlciBtZTt0aW1iZXJzXQpgYGAKCiMjIEN1c3RvbSBjbGFzc2lmaWVyIHN0eWxlcwpBIGRpcmVjdGl2ZSB0aGF0IHN0YXJ0cyB3aXRoICIuIiBkZWZpbmUgYSAqKmNsYXNzaWZpZXIncyBzdHlsZSoqLiBUaGUgc3R5bGUgaXMgd3JpdHRlbiBhcyBhIHNwYWNlIHNlcGFyYXRlZCBsaXN0IG9mICptb2RpZmllcnMqIGFuZCAqa2V5L3ZhbHVlIHBhaXJzKi4KCmBgYHtub21ub21sfQojLmJveDogZmlsbD0jOGY4IGRhc2hlZAojLmJsb2I6IHZpc3VhbD1lbGxpcHNlIHRpdGxlPWJvbGQKIy5hcnZpbmQ6IHZpc3VhbD1yaG9tYiB0aXRsZT1ib2xkIGRhc2hlZCBmaWxsPUNvcm5GbG93ZXJCbHVlCls8Ym94PiBHcmVlbkJveF0KWzxibG9iPiBCbG9iYnldCls8YXJ2aW5kPiBTb21lb25lXQpgYGAKCgojI0tleS92YWx1ZSBwYWlycwpmaWxsPShhbnkgY3NzIGNvbG9yKQpzdHJva2U9KGFueSBjc3MgY29sb3IpCmFsaWduPWNlbnRlcgphbGlnbj1sZWZ0CmRpcmVjdGlvbj1yaWdodApkaXJlY3Rpb249ZG93bgoKdmlzdWFsPWFjdG9yCnZpc3VhbD1jbGFzcwp2aXN1YWw9ZGF0YWJhc2UKdmlzdWFsPWVsbGlwc2UKdmlzdWFsPWVuZAp2aXN1YWw9ZnJhbWUKdmlzdWFsPWhpZGRlbgp2aXN1YWw9aW5wdXQKdmlzdWFsPW5vbmUKdmlzdWFsPW5vdGUKdmlzdWFsPXBhY2thZ2UKdmlzdWFsPXJlY2VpdmVyCnZpc3VhbD1yaG9tYgp2aXN1YWw9cm91bmRyZWN0CnZpc3VhbD1zZW5kZXIKdmlzdWFsPXN0YXJ0CnZpc3VhbD1zeW5jCnZpc3VhbD10YWJsZQp2aXN1YWw9dHJhbnNjZWl2ZXIKU3R5bGUgdGl0bGUgYW5kIHRleHQgYm9keQp0aXRsZT1sZWZ0LGl0YWxpYyxib2xkCmJvZHk9Y2VudGVyLGl0YWxpYyxib2xkCgojIyBUZXh0IG1vZGlmaWVycwpib2xkCmNlbnRlcgppdGFsaWMKbGVmdAp1bmRlcmxpbmUKCmBgYHtub21ub21sfQojIC5ib3g6IGZpbGw9IzhmOCBkYXNoZWQKIyAuYmxvYjogdmlzdWFsPXJob21iIHRpdGxlPWJvbGQgZmlsbD0jOGY4IGRhc2hlZAoKW0FdLVtCXQpbQl0tLVs8dXNlY2FzZT5DXQpbQ10tWzxib3g+IERdCltCXS0tWzxibG9iPiBKYWJiYTtUaGVIdXRdCmBgYAoKYGBge25vbW5vbWx9ClthXSAtPltiXQpbYl0gLTo+IFtjXQpbY11vLT5bZF0KW2RdLS8tW2VdCmBgYAoKYGBge25vbW5vbWx9CiNmaWxsOiBsaWdodGdyZWVuOyBsaWdodGJsdWU7IGxpZ2h0eWVsbG93OyBncmV5OyB3aGl0ZQoKWzx0YWJsZT4gdGFibGUgfCBjIHwgOSBdCgpbUiB8IFs8dGFibGU+IFBhY2thZ2VzIHwKICAgICAgICAgQmFzZSBSIHwKICAgICAgICAgWyA8dGFibGU+IHRpZHl2ZXJzZXwgZ2dwbG90IHwgdGlkeXIgfCByZWFkciB8CiAgICAgICAgICAgICBbPHRhYmxlPiBkcGx5cnwKICAgICAgICAgICAgICAgICBtYWdyaXR0ciB8IE90aGVyc11dXV0KYGBgCmBgYHtub21ub21sfQojZmlsbDogbGlnaHRncmVlbjsgbGlnaHRibHVlOyBsaWdodHllbGxvdzsgcGluazsgd2hpdGUKCltSU3R1ZGlvIHwgW1IgfCBbPHRhYmxlPiBQYWNrYWdlcyB8CiAgICAgICAgICAgICAgICAgICBCYXNlIFIgfCBbIHRpZHl2ZXJzZSB8CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBnZ3Bsb3QgfCB0aWR5ciB8IHJlYWRyIHwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFtkcGx5cl0tLVttYWdyaXR0cl0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFtkcGx5cl0tLVtPdGhlcnNdCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCB0aWJibGUKICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdCiAgICAgICAgICAgICAgICAgfCBsdWJyaWRhdGUgfCBEaWFncmFtbWVSIHwgTGF0dGljZV1dXQpgYGAKCmBgYHtub21ub21sIG1pbmRtYXB9CltMaW51eF0rLVtVYnVudHVdCltMaW51eF0rLVtNaW50XQpbVWJ1bnR1XS0tW01pbnRdCltMaW51eF0rLVtSb3NhIExpbnV4XQpbTGludXhdKy1bTXggTGludXhdCltEZWJpYW5dLStbTGludXhdCgoKW0ZlZG9yYV0tK1tMaW51eF0KW1B1cHB5IExpbnV4XS0rW0xpbnV4XQpbUGVyc29uYWwgUHVwc10tK1tQdXBweSBMaW51eF0KCmBgYAo=</div>
 
 
 </div>
@@ -769,6 +787,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("Grammar-of-Diagrams.Rmd");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {

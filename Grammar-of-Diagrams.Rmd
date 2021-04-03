@@ -4,6 +4,7 @@ author: YOUR NAME HERE
 output: 
   html_document:
     toc_float: TRUE
+    code_download: true
 ---
 
 ```{r setup, include=FALSE}

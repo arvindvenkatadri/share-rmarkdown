@@ -3,7 +3,9 @@ title: "Grammar of Maps"
 author: "Arvind Venkatadri"
 date: "19/Feb/2021"
 output:
-  html_document: default
+  html_document:
+    toc_float: TRUE
+    code_download: true
 ---
 
 ```{r setup, include=FALSE}

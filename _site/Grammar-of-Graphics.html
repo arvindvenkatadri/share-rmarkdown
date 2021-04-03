@@ -587,14 +587,13 @@ div.tocify {
                      color = species)) +
   geom_point() </code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
-<p><img src="Grammar-of-Graphics_files/figure-html/scale-color-1.png" width="672" /></p>
-<p>Note that the scale is consistent - every point for a compact car is drawn in tan, whereas SUVs are drawn in pink. The scale can be changed to use a different color palette:</p>
+<p><img src="Grammar-of-Graphics_files/figure-html/scale-color-1.png" width="672" /> The scale can be changed to use a different color palette:</p>
 <pre class="r"><code>ggplot(data = penguins, 
        mapping = aes(x = bill_length_mm, 
                      y = body_mass_g, 
                      color = species)) +
   geom_point() +
-  scale_color_brewer(palette = &quot;Dark2&quot;)</code></pre>
+  scale_color_brewer(palette = &quot;Dark2&quot;,direction = -1)</code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
 <p><img src="Grammar-of-Graphics_files/figure-html/scale-color-palette-1.png" width="672" /></p>
 <p>Now we are using a different palette, but the scale is still consistent: all Adelie penguins utilize the same color, whereas Chinstrap use a new color <strong>but each Adelie still uses the same, consistent color</strong>.</p>
@@ -632,12 +631,12 @@ p +
        mapping = aes(x = bill_length_mm, 
                      y = body_mass_g)) +
   geom_point() +
-  facet_wrap(~ species)</code></pre>
+  facet_wrap(~ island)</code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
 <p><img src="Grammar-of-Graphics_files/figure-html/facet-1-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = body_mass_g, color = sex)) +
   geom_point() +
-  facet_grid(species~island)</code></pre>
+  facet_grid(species ~ island, scales = &quot;free_y&quot;)</code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
 <p><img src="Grammar-of-Graphics_files/figure-html/facet-2-1.png" width="672" /></p>
 <pre class="r"><code># Ria&#39;s explanation: This code did not work becasue....</code></pre>

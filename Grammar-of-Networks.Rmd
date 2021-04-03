@@ -3,7 +3,9 @@ title: "Networks as Metaphors"
 author: "YOUR NAME HERE"
 date: "DATE HERE"
 output:
-  html_document: default
+  html_document:
+    toc_float: TRUE
+    code_download: true
 
 ---
 
